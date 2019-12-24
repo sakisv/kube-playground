@@ -26,6 +26,10 @@ func main() {
 		fmt.Fprintf(w, "v%s - Hello from %s\n", version, hostname)
 	})
 
+	http.HandleFunc("/echo", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "", version, hostname)
+	})
+
 	log.Printf("Starting on port %s", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
